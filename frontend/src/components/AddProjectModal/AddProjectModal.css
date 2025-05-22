@@ -1,0 +1,427 @@
+:root {
+    --primary-color: #4facfe;
+    --secondary-color: #00f2fe;
+    --text-color: #2d3748;
+    --text-light: #718096;
+    --border-color: #e2e8f0;
+    --bg-color: #ffffff;
+    --overlay-color: rgba(0, 0, 0, 0.7);
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+    --text-color: #f7fafc;
+    --text-light: #cbd5e0;
+    --border-color: #4a5568;
+    --bg-color: #1a202c;
+    --overlay-color: rgba(0, 0, 0, 0.9);
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--overlay-color);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    background: var(--bg-color);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+.modal-glow-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(79, 172, 254, 0.1) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.modal-content:hover .modal-glow-effect {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(90deg);
+}
+
+.close-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.modal-header {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+.modal-header p {
+    margin: 8px 0 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.image-upload {
+    margin: 0 auto 25px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.image-upload.dragging {
+    background: rgba(79, 172, 254, 0.05);
+    border: 2px dashed var(--primary-color);
+    transform: scale(0.98);
+}
+
+.image-preview-container {
+    width: var(--image-size);
+    height: var(--image-size);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-upload:hover .image-hover-overlay {
+    opacity: 1;
+}
+
+.image-upload:hover .image-preview-container {
+    transform: scale(1.03);
+}
+
+.image-upload-placeholder {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.image-upload:hover .image-upload-placeholder {
+    border-color: var(--primary-color);
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.image-upload-placeholder svg {
+    margin-bottom: 12px;
+    color: var(--text-light);
+}
+
+.image-upload-placeholder p {
+    margin: 0 0 4px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.image-upload-placeholder small {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.cancel-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    color: var(--text-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+.submit-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .image-preview-container {
+        width: var(--mobile-image-size) !important;
+        height: var(--mobile-image-size) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .submit-btn, .cancel-btn {
+        width: 100%;
+    }
+}
+
+/* ... (mantenha todos os estilos anteriores) */
+
+.image-editor-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.react-crop {
+    max-height: 60vh;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.ReactCrop__crop-selection {
+    border: 2px solid #4facfe;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+
+.crop-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.save-crop-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-crop-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.image-hover-overlay svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+}
+.image-editor-container img {
+    transition: transform 0.2s ease;
+}
+
+.crop-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.save-crop-btn, .cancel-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save-crop-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.cancel-btn {
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+}
+
+.image-upload-placeholder {
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.image-preview-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.image-hover-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+.image-preview-container:hover .image-hover-overlay {
+    opacity: 1;
+}

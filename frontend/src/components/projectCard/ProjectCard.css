@@ -1,0 +1,301 @@
+.project-card-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.project-card {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    height: 160px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    transform-style: preserve-3d;
+    z-index: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de brilho dinâmico */
+.card-glow {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 70% 30%,
+        rgba(100, 210, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0) 60%
+    );
+    opacity: 0;
+
+    z-index: -1;
+}
+
+.card-glow.active {
+    opacity: 1;
+}
+
+/* Imagem redonda com borda animada */
+.project-image-wrapper {
+    width: 90px;
+    height: 90px;
+    margin: 20px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+    transition: all 0.4s ease;
+    filter: brightness(0.98) contrast(1.05) saturate(1.1);
+}
+
+.image-border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    background: linear-gradient(45deg, #4facfe, #00f2fe) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    transition: all 0.6s ease;
+    z-index: 1;
+}
+
+.project-card:hover .image-border {
+    transform: rotate(180deg);
+    border-width: 4px;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.08);
+}
+
+/* Conteúdo principal */
+.project-content {
+    padding: 20px 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.project-name {
+    margin: 0 0 8px 0;
+    color: #1a202c;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.2px;
+}
+
+.project-description {
+    margin: 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 38px;
+}
+
+/* Divider estilizado */
+.project-divider {
+    margin: 12px 0;
+    position: relative;
+}
+
+.divider-line {
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(237, 242, 247, 0) 0%, 
+        rgba(160, 174, 192, 0.4) 50%, 
+        rgba(237, 242, 247, 0) 100%);
+}
+
+/* Footer com animação */
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.project-badge {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(79, 172, 254, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover .project-badge {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.project-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(74, 85, 104, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-cta {
+    background: rgba(79, 172, 254, 0.2);
+    transform: translateX(4px);
+}
+
+/* Efeito 3D sutil no hover */
+.project-card:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(1deg) scale(1.02);
+}
+
+/* Estilos base permanecem iguais */
+
+.image-upload-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.image-upload-area {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-preview-wrapper {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-upload-area:hover .image-hover-overlay {
+    opacity: 1;
+}
+
+.image-upload-area:hover .image-preview-wrapper {
+    transform: scale(1.03);
+}
+
+.image-upload-placeholder {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.image-upload-area:hover .image-upload-placeholder {
+    border-color: #4facfe;
+    background: rgba(79, 172, 254, 0.05);
+}
+
+.image-upload-placeholder svg {
+    margin-bottom: 12px;
+    color: #a0aec0;
+}
+
+.image-upload-placeholder p {
+    margin: 0 0 4px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.image-upload-placeholder small {
+    color: #a0aec0;
+    font-size: 0.8rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .image-preview-wrapper {
+        width: 140px !important;
+        height: 140px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .submit-btn, .cancel-btn {
+        width: 100%;
+    }
+}

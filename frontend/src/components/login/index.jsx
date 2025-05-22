@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
-import { FaEye, FaEyeSlash, FaArrowLeft, FaUserPlus } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaArrowLeft, FaUserPlus, FaLock, FaEnvelope, FaUser } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import './login.css';
 
 const AuthSystem = () => {
   const [activeView, setActiveView] = useState('login');
-  
+
   return (
     <div className="auth-system">
+      <div className="particles">
+        {[...Array(20)].map((_, i) => (
+          <div key={i} className="particle" style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            width: `${Math.random() * 10 + 5}px`,
+            height: `${Math.random() * 10 + 5}px`,
+            opacity: Math.random() * 0.5 + 0.1,
+            animationDelay: `${Math.random() * 5}s`
+          }} />
+        ))}
+      </div>
+      
       {activeView === 'login' && <LoginView goToView={setActiveView} />}
       {activeView === 'forgot' && <ForgotPasswordView goToView={setActiveView} />}
       {activeView === 'register' && <RegisterView goToView={setActiveView} />}
@@ -32,20 +46,32 @@ const LoginView = ({ goToView }) => {
   return (
     <AuthCard>
       <div className="logo-header">
-        <h1>On<span>Test</span>Plan</h1>
-        <p>Plataforma de testes automatizados</p>
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          On<span>Test</span>Plan
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          Plataforma de planejamento de testes automatizados
+        </motion.p>
       </div>
-      
+
       <form onSubmit={handleSubmit}>
         <InputField
           label="Email"
           type="email"
           value={email}
-          placeholder="sadas"
           onChange={(e) => setEmail(e.target.value)}
           required
+          icon={<FaEnvelope />}
         />
-        
+
         <div className="password-input">
           <InputField
             label="Senha"
@@ -53,6 +79,7 @@ const LoginView = ({ goToView }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            icon={<FaLock />}
           />
           <button 
             type="button" 
@@ -62,20 +89,24 @@ const LoginView = ({ goToView }) => {
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </button>
         </div>
-        
+
         <div className="auth-actions">
           <button type="button" className="link-button" onClick={() => goToView('forgot')}>
             Esqueceu a senha?
           </button>
         </div>
-        
+
         <SubmitButton loading={isLoading}>
           {isLoading ? 'Carregando...' : 'Entrar'}
         </SubmitButton>
-        
+
         <div className="auth-footer">
           <span>Novo no OnTestPlan?</span>
-          <button type="button" className="link-button" onClick={() => goToView('register')}>
+          <button 
+            type="button" 
+            className="link-button" 
+            onClick={() => goToView('register')}
+          >
             Criar conta
           </button>
         </div>
@@ -99,20 +130,29 @@ const ForgotPasswordView = ({ goToView }) => {
 
   return (
     <AuthCard>
-      <button className="back-button" onClick={() => goToView('login')}>
+      <motion.button 
+        className="back-button" 
+        onClick={() => goToView('login')}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
         <FaArrowLeft /> Voltar
-      </button>
-      
+      </motion.button>
+
       <div className="logo-header">
         <h1>Recuperar Senha</h1>
         <p>Digite seu email para receber o link de recuperação</p>
       </div>
-      
+
       {isSent ? (
-        <div className="success-message">
+        <motion.div 
+          className="success-message"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
           <p>Email enviado com sucesso!</p>
           <p>Verifique sua caixa de entrada.</p>
-        </div>
+        </motion.div>
       ) : (
         <form onSubmit={handleSubmit}>
           <InputField
@@ -121,8 +161,9 @@ const ForgotPasswordView = ({ goToView }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            icon={<FaEnvelope />}
           />
-          
+
           <SubmitButton>
             Enviar Link
           </SubmitButton>
@@ -163,15 +204,20 @@ const RegisterView = ({ goToView }) => {
 
   return (
     <AuthCard>
-      <button className="back-button" onClick={() => goToView('login')}>
+      <motion.button 
+        className="back-button" 
+        onClick={() => goToView('login')}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
         <FaArrowLeft /> Voltar
-      </button>
-      
+      </motion.button>
+
       <div className="logo-header">
         <h1>Criar Conta</h1>
         <p>Junte-se ao OnTestPlan</p>
       </div>
-      
+
       <form onSubmit={handleSubmit}>
         <InputField
           label="Nome Completo"
@@ -180,8 +226,9 @@ const RegisterView = ({ goToView }) => {
           value={formData.name}
           onChange={handleChange}
           required
+          icon={<FaUser />}
         />
-        
+
         <InputField
           label="Email"
           name="email"
@@ -189,8 +236,9 @@ const RegisterView = ({ goToView }) => {
           value={formData.email}
           onChange={handleChange}
           required
+          icon={<FaEnvelope />}
         />
-        
+
         <div className="password-input">
           <InputField
             label="Senha"
@@ -199,6 +247,7 @@ const RegisterView = ({ goToView }) => {
             value={formData.password}
             onChange={handleChange}
             required
+            icon={<FaLock />}
           />
           <button 
             type="button" 
@@ -208,7 +257,7 @@ const RegisterView = ({ goToView }) => {
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </button>
         </div>
-        
+
         <InputField
           label="Confirmar Senha"
           name="confirmPassword"
@@ -216,8 +265,9 @@ const RegisterView = ({ goToView }) => {
           value={formData.confirmPassword}
           onChange={handleChange}
           required
+          icon={<FaLock />}
         />
-        
+
         <SubmitButton loading={isLoading}>
           {isLoading ? 'Criando conta...' : (
             <>
@@ -225,7 +275,7 @@ const RegisterView = ({ goToView }) => {
             </>
           )}
         </SubmitButton>
-        
+
         <div className="auth-footer">
           <span>Já tem uma conta?</span>
           <button type="button" className="link-button" onClick={() => goToView('login')}>
@@ -239,26 +289,36 @@ const RegisterView = ({ goToView }) => {
 
 // Componentes Reutilizáveis
 const AuthCard = ({ children }) => (
-  <div className="auth-card">
+  <motion.div 
+    className="auth-card"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
     {children}
-  </div>
+  </motion.div>
 );
 
-const InputField = ({ label, ...props }) => (
+const InputField = ({ label, icon, ...props }) => (
   <div className="input-field">
     <label>{label}</label>
-    <input {...props} />
+    <div className="input-container">
+      {icon && <span className="input-icon">{icon}</span>}
+      <input {...props} />
+    </div>
   </div>
 );
 
 const SubmitButton = ({ children, loading = false }) => (
-  <button 
+  <motion.button 
     type="submit" 
     className={`submit-button ${loading ? 'loading' : ''}`}
     disabled={loading}
+    whileHover={{ scale: loading ? 1 : 1.03 }}
+    whileTap={{ scale: loading ? 1 : 0.98 }}
   >
     {children}
-  </button>
+  </motion.button>
 );
 
 export default AuthSystem;
