@@ -10,6 +10,12 @@
   --active-bg: #e0e7ff;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --header-height: 80px;
+  --status-completed: #10b981;
+  --status-progress: #f59e0b;
+  --status-pending: #ef4444;
+  --priority-critical: #dc2626;
+  --priority-high: #ea580c;
+  --priority-medium: #0891b2;
 }
 
 /* Menu Lateral */
@@ -170,7 +176,7 @@
   cursor: pointer;
 }
 
-.parent-content > div {
+.parent-content>div {
   margin-left: auto;
 }
 
@@ -240,15 +246,15 @@
     width: 280px;
     transform: translateX(-100%);
   }
-  
+
   .side-menu.collapsed {
     transform: translateX(-100%);
   }
-  
+
   .side-menu:not(.collapsed) {
     transform: translateX(0);
   }
-  
+
   .side-menu.collapsed:hover {
     width: 280px;
   }
