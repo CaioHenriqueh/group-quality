@@ -2,7 +2,7 @@ import React from 'react';
 import { FiCheckCircle, FiClock, FiAlertCircle, FiTrendingUp } from 'react-icons/fi';
 import './StatusCards.css';
 
-const StatusCards = ({ data, selectedStatus, onStatusChange }) => {
+const StatusCards = ({ data, selectedStatus, onStatusChange , darkMode}) => {
   const statusCounts = {
     all: data.length,
     done: data.filter(f => f.status === 'done').length,
@@ -18,7 +18,7 @@ const StatusCards = ({ data, selectedStatus, onStatusChange }) => {
   };
 
   return (
-    <div className="status-cards-container">
+    <div className={`status-cards-container ${darkMode ? 'dark-mode' : ''}`}>
       {Object.entries(statusCounts).map(([key, count]) => (
         <div
           key={key}

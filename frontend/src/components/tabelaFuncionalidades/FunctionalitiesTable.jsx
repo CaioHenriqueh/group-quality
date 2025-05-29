@@ -12,7 +12,7 @@ import './FunctionalitiesTable.css';
 // Charting libraries
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
 
-const FunctionalitiesTable = () => {
+const FunctionalitiesTable = ({darkMode}) => {
   // Theme state
   const [darkMode, setDarkMode] = useState(false);
 
@@ -113,9 +113,35 @@ const FunctionalitiesTable = () => {
     }
   }, [darkMode]);
 
+  // Funções de paginação (adicionar antes do return)
+  const prevPage = () => {
+    setCurrentPage(prev => Math.max(prev - 1, 1));
+  };
+
+  const nextPage = () => {
+    setCurrentPage(prev => Math.min(prev + 1, totalPages));
+  };
+
+  const goToPage = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Funções para edição/exclusão (adicionar antes do return)
+  const handleSaveEdit = (editedItem) => {
+    setFunctionalities(prev =>
+      prev.map(item => (item.id === editedItem.id ? editedItem : item))
+    );
+    setEditingItem(null);
+  };
+
+  const confirmDelete = () => {
+    setFunctionalities(prev => prev.filter(item => item.id !== itemToDelete.id));
+    setItemToDelete(null);
+    setCurrentPage(1); // Reset para a primeira página após exclusão
+  };
+
   return (
-    <div className={`dsm-table-container ${darkMode ? 'dark' : ''}`}>
-      {/* Product Header */}
+    <div className={`dsm-table-container ${darkMode ? 'dark-mode' : ''}`}>
       <div className="product-header">
         <div className="product-card">
           <div className="product-logo-container">

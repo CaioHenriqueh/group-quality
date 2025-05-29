@@ -1,0 +1,210 @@
+/* Adicionando ao arquivo FunctionalitiesTable.css */
+
+/* dark-mode Mode Overrides */
+.dsm-table-container.dark-mode {
+  --primary-color: #4f54f5;
+  --primary-dark-mode: #3a3fd1;
+  --text-color: #f0f0f0;
+  --text-light: #aaa;
+  --border-color: #444;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --status-completed: #11B45C;
+  --status-progress: #FF9900;
+  --status-pending: #EE421D;
+  --status-high: #EE421D;
+  --status-medium: #FF9900;
+  --status-low: #11B45C;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.5);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Ajustes específicos para dark-mode mode */
+.dsm-table-container.dark-mode .product-card {
+  background: #1e1e2f;
+  border-color: #2a2a3a;
+}
+
+.dsm-table-container.dark-mode .product-info h2 {
+  color: var(--primary-color);
+}
+
+.dsm-table-container.dark-mode .product-info p {
+  color: var(--text-light);
+}
+
+.dsm-table-container.dark-mode .theme-toggle,
+.dsm-table-container.dark-mode .view-toggle,
+.dsm-table-container.dark-mode .filter-button {
+  background: #2a2a3a;
+  border-color: #444;
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .theme-toggle:hover,
+.dsm-table-container.dark-mode .view-toggle:hover,
+.dsm-table-container.dark-mode .filter-button:hover {
+  background: rgba(79, 84, 245, 0.2);
+  border-color: var(--primary-color);
+}
+
+.dsm-table-container.dark-mode .search-wrapper input {
+  background: #2a2a3a;
+  border-color: #444;
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .premium-table th {
+  background: #1e1e1e;
+  color: var(--text-light);
+  border-bottom-color: #444;
+}
+
+.dsm-table-container.dark-mode .premium-table td {
+  background: #1e1e2f;
+  border-bottom-color: #444;
+}
+
+.dsm-table-container.dark-mode .table-row:hover td {
+  background: rgba(79, 84, 245, 0.1);
+}
+
+.dsm-table-container.dark-mode .filters-panel {
+  background: #1e1e2f;
+  border-color: #444;
+}
+
+.dsm-table-container.dark-mode .owner-tag {
+  background: #2a2a3a;
+  border-color: #444;
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .owner-tag.selected {
+  background: var(--primary-color);
+  color: white;
+}
+
+.dsm-table-container.dark-mode .save-view {
+  background: rgba(79, 84, 245, 0.2);
+}
+
+.dsm-table-container.dark-mode .empty-state {
+  background: #1e1e2f;
+  color: var(--text-light);
+}
+
+.dsm-table-container.dark-mode .empty-state h3 {
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .chart-view {
+  background: #1e1e2f;
+  border-color: #444;
+}
+
+.dsm-table-container.dark-mode .chart-container h3 {
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .chart-item h4 {
+  color: var(--text-light);
+}
+
+/* Modais no dark-mode mode */
+.dsm-table-container.dark-mode .edit-modal,
+.dsm-table-container.dark-mode .confirm-modal {
+  background: #1e1e2f;
+  border-color: #444;
+}
+
+.dsm-table-container.dark-mode .modal-header {
+  border-bottom-color: #444;
+}
+
+.dsm-table-container.dark-mode .modal-header h3 {
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .form-group input,
+.dsm-table-container.dark-mode .form-group select {
+  background: #2a2a3a;
+  border-color: #444;
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .modal-footer {
+  border-top-color: #444;
+}
+
+.dsm-table-container.dark-mode .cancel-btn {
+  background: #2a2a3a;
+  border-color: #444;
+  color: var(--text-color);
+}
+
+/* Ajustes para os gráficos no dark-mode mode */
+.dsm-table-container.dark-mode .recharts-wrapper .recharts-cartesian-grid line {
+  stroke: #444;
+}
+
+.dsm-table-container.dark-mode .recharts-wrapper .recharts-cartesian-axis line,
+.dsm-table-container.dark-mode .recharts-wrapper .recharts-cartesian-axis-tick line {
+  stroke: #666;
+}
+
+.dsm-table-container.dark-mode .recharts-wrapper .recharts-cartesian-axis-tick-value {
+  fill: #aaa;
+}
+
+.dsm-table-container.dark-mode .recharts-wrapper .recharts-legend-item-text {
+  fill: #f0f0f0;
+}
+
+/* Ajustes para tooltips */
+.dsm-table-container.dark-mode .recharts-tooltip {
+  background: #2a2a3a !important;
+  border: 1px solid #444 !important;
+  color: #f0f0f0 !important;
+}
+
+/* Status cards no dark-mode mode */
+.dsm-table-container.dark-mode .status-card {
+  background: #1e1e2f;
+  border-color: #444;
+}
+
+.dsm-table-container.dark-mode .status-card.active {
+  border-color: var(--status-color);
+}
+
+.dsm-table-container.dark-mode .status-info .status-label {
+  color: #bbb;
+}
+
+/* Prioridades no dark-mode-mode mode */
+.dsm-table-container.dark-mode .priority-badge.high {
+  background: rgba(238, 66, 29, 0.2);
+}
+
+.dsm-table-container.dark-mode .priority-badge.medium {
+  background: rgba(255, 153, 0, 0.2);
+}
+
+/* Barra de progresso no dark-mode mode */
+.dsm-table-container.dark-mode .progress-bar {
+  background: rgba(79, 84, 245, 0.2);
+}
+
+/* Paginação no dark-mode mode */
+.dsm-table-container.dark-mode .pagination-btn {
+  background: #2a2a3a;
+  border-color: #444;
+  color: var(--text-color);
+}
+
+.dsm-table-container.dark-mode .pagination-btn.active {
+  background: var(--primary-color);
+  color: white;
+}

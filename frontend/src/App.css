@@ -1,5 +1,108 @@
+/* Fonte padrão */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+/* Dark mode para o body */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Header */
+.main-header.dark-mode {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+/* Ícones e botões gerais */
+.dark-mode .menu-toggle,
+.dark-mode .mode-icon,
+.dark-mode .submenu-icon,
+.dark-mode .menu-icon {
+    color: #f0f0f0;
+}
+
+/* Menu container */
+.menu-container.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Hover no perfil */
+.clean-user-profile.hovered {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Botões em dark mode */
+.dark-mode button {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Status dot no dark */
+.dark-mode .user-avatar .status-dot {
+    background-color: #4caf50;
+}
+
+/* Side menu específico */
+.side-menu.dark-mode {
+    background-color: #1e1e2f;
+    color: #f0f0f0;
+}
+
+/* Itens principais e submenus */
+.side-menu.dark-mode .menu-items .menu-section,
+.side-menu.dark-mode .menu-parent,
+.side-menu.dark-mode .submenu-item {
+    color: #f0f0f0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+/* Itens ativos */
+.side-menu.dark-mode .menu-items .menu-section.active,
+.side-menu.dark-mode .submenu-item.active {
+    background-color: #2e2e3e;
+}
+
+/* Hover nos itens */
+.side-menu.dark-mode .menu-items .menu-section:hover,
+.side-menu.dark-mode .menu-parent:hover,
+.side-menu.dark-mode .submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Submenu background */
+.side-menu.dark-mode .submenu {
+    background-color: #2a2a3a;
+}
+
+/* Footer */
+.side-menu.dark-mode .menu-footer {
+    color: #aaa;
+}
+
+/* Ajuste extra para o logo */
+.side-menu.dark-mode .logo-header h1,
+.side-menu.dark-mode .logo-header p {
+    color: #f0f0f0;
+}
+
+/* Dark mode styles */
+.dark-mode .status-card {
+  background: #1e1e2f;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  color: #f0f0f0;
+}
+
+.dark-mode .status-card.active {
+  border-color: var(--status-color);
+}
+
+.dark-mode .status-info .status-label {
+  color: #bbb;
 }

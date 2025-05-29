@@ -5,7 +5,7 @@ import { FiLayers, FiUsers, FiUserCheck, FiSettings } from "react-icons/fi";
 import { RiShieldUserLine } from "react-icons/ri";
 import "./menu.css";
 
-const SideMenu = ({ isCollapsed, toggleCollapse }) => {
+const SideMenu = ({ isCollapsed, toggleCollapse, darkMode }) => {
     const [accessControlOpen, setAccessControlOpen] = useState(false);
     const [activeItem, setActiveItem] = useState("Projetos");
     const [isHovered, setIsHovered] = useState(false);
@@ -19,7 +19,7 @@ const SideMenu = ({ isCollapsed, toggleCollapse }) => {
 
     return (
         <motion.div
-            className={`side-menu ${isCollapsed ? 'collapsed' : ''}`}
+            className={`side-menu ${isCollapsed ? 'collapsed' : ''} ${darkMode ? 'dark-mode' : ''}`}
             initial={{ width: isCollapsed ? 80 : 280 }}
             animate={{
                 width: isCollapsed ? (isHovered ? 280 : 80) : 280
@@ -28,7 +28,7 @@ const SideMenu = ({ isCollapsed, toggleCollapse }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="menu-container">
+            <div className={`menu-container ${darkMode ? 'dark-mode' : ''}`}>
                 <div className="menu-header" onClick={isCollapsed ? toggleCollapse : undefined}>
                     <div className="logo-header">
                         <motion.h1
@@ -49,7 +49,7 @@ const SideMenu = ({ isCollapsed, toggleCollapse }) => {
                 <div className="menu-content">
                     <motion.ul className="menu-items">
                         <motion.li
-                            className={`menu-section ${activeItem === "Projetos" ? "active" : ""}`}
+                            className={`menu-section ${activeItem === "Projetos" ? "active" : ""}  ${darkMode ? 'dark-mode' : ''}`}
                             onClick={() => handleItemClick("Projetos")}
                             whileHover={{ scale: 1.02 }}
                         >
